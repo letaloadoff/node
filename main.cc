@@ -1,23 +1,23 @@
 #include "clsBpInterpreter.cc"
-#include <stdio.h>
+#include <fstream>
+#include <sstream>
 
-int main ()
+int main()
 {
-
   // get file
-  FILE * pFile = fopen ("99bottles","r");
-  char strProg [20000];
-  if (pFile == NULL) perror ("Error opening file");
-  else {
-     if ( fgets (strProg , 20000 , pFile) != NULL )
-       puts (strProg);
-     fclose (pFile);
-   }
-   
-  clsBrainPlusInterpreter bpi=new clsBrainPlusInterpreter(strProg);
-  bpi.evaluate();
+  std::ifstream inFile;
+  inFile.open("99bottles",std::ifstream::in);//open the input file
+  
+  std::stringstream strStream;
+  strStream << inFile.rdbuf();//read the file
+  std::string strProg = strStream.str();//str holds the content of the file
+  
+  const char* prog=strProg.c_str();
 
+  // create bp interpreter and run;
+  clsBrainPlusInterpreter* bpi=new clsBrainPlusInterpreter(prog);
+  bpi->evaluate();
+  delete bpi;
+  
   return 0;
-};
-
-main();
+}

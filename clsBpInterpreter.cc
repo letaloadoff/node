@@ -1,8 +1,10 @@
 // 2017-05-19: http://zacstewart.com/2013/09/15/learning-cpp-a-brainfuck-interpreter.html
 
 #include <iostream>
+/*#include <string>
+*/
 
-using namespace std;
+//using namespace std;
 
 class clsBrainPlusInterpreter {
   public:
@@ -89,5 +91,5 @@ class clsBrainPlusInterpreter {
         }
         p++;
       }
-    }
+    }  
 };

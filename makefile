@@ -1,7 +1,3 @@
-all: main clsBpInterpreter
+all:
+	g++ -std=c++11 main.cc clsBpInterpreter.cc -o think
 
-%: %.cc
-	g++ -std=c++11 $< -o $@
-
-%: %.c
-	gcc $< -o $@
